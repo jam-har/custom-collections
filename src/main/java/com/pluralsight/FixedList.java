@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FixedList<T> {
@@ -7,13 +8,18 @@ public class FixedList<T> {
     private List<T> items;
     private int maxSize;
 
-    public FixedList(List<T> items, int maxSize) {
-        this.items = items;
+    public FixedList(int maxSize) {
         this.maxSize = maxSize;
+        this.items = new ArrayList<>();
+
+    }
+
+    public FixedList() {
+
     }
 
     public void add(T item) {
-        if (items.size() < maxSize) {
+        if (items.isEmpty() || items.size() < maxSize) {
             items.add(item);
         } else {
             System.out.println("The list is full");
